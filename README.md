@@ -1,6 +1,6 @@
 # Hunger Free Dallas County fridge tracker software
 
-This repo contains the software used to track community fridge usage by Hunger Free Dallas County (The Food Grid).
+This repo contains the software used by Hunger Free Dallas County (The Food Grid) to track community fridge usage.
 
 ## Overview
 
@@ -24,7 +24,7 @@ This repo contains the software used to track community fridge usage by Hunger F
 
 ## Why
 
-Community fridges are obtained partially through the help of grants from the county. Having usage data for the fridges is very useful in applying for these grants.
+Community fridges are obtained partially through the help of grants from the county. Having usage data for the fridges is very helpful in applying for these grants.
 
 ## Technical details
 
@@ -38,6 +38,8 @@ Community fridges are obtained partially through the help of grants from the cou
 	-	Adafruit Unified Sensor
 	-	Adafruit_VL53L0X
 	-	DHT sensor library (by Adafruit)
+	-	Extra board URLs:
+		-	`http://arduino.esp8266.com/stable/package_esp8266com_index.json,https://dl.espressif.com/dl/package_esp32_index.json`
 -	Server software env vars:
 	-	MAIL_EMAIL
 		-	"From" email address
