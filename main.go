@@ -96,17 +96,6 @@ func emergencyHandler(name string) {
 	msg.SetBody("text/html", `<hr><h2>Lost contact with a community fridge.</h2><br><p>Community fridge, named "`+name+`", has not sent a status update to The Food Grid's servers for 30 minutes.`)
 	if !isInList {
 		fmt.Println("Email for " + name + " is not configured")
-		if os.Getenv("ADMIN_EMAIL") != "" && os.Getenv("MAIL_EMAIL") != "" && os.Getenv("MAIL_PASSWORD") != "" {
-			fmt.Println("Sending admin an email")
-			msg.SetHeader("To", os.Getenv("ADMIN_EMAIL"))
-			n := gomail.NewDialer(MailServer, MailPort, os.Getenv("MAIL_EMAIL"), os.Getenv("MAIL_PASSWORD"))
-			err := n.DialAndSend(msg)
-			if err != nil {
-				fmt.Println("Error sending admin email, " + err.Error())
-			} else {
-				fmt.Println("Successfully sent admin email")
-			}
-		}
 	} else {
 		fmt.Println("Contacting owner of community fridge " + name)
 		if os.Getenv("MAIL_EMAIL") == "" || os.Getenv("MAIL_PASSWORD") == "" {
@@ -124,17 +113,17 @@ func emergencyHandler(name string) {
 			} else {
 				fmt.Println("Successfully sent email")
 			}
-			if os.Getenv("ADMIN_EMAIL") != "" && os.Getenv("MAIL_EMAIL") != "" && os.Getenv("MAIL_PASSWORD") != "" {
-				fmt.Println("Sending admin an email")
-				msg.SetHeader("To", os.Getenv("ADMIN_EMAIL"))
-				n := gomail.NewDialer(MailServer, MailPort, os.Getenv("MAIL_EMAIL"), os.Getenv("MAIL_PASSWORD"))
-				err := n.DialAndSend(msg)
-				if err != nil {
-					fmt.Println("Error sending admin email, " + err.Error())
-				} else {
-					fmt.Println("Successfully sent admin email")
-				}
-			}
+		}
+	}
+	if os.Getenv("ADMIN_EMAIL") != "" && os.Getenv("MAIL_EMAIL") != "" && os.Getenv("MAIL_PASSWORD") != "" {
+		fmt.Println("Sending admin an email")
+		msg.SetHeader("To", os.Getenv("ADMIN_EMAIL"))
+		n := gomail.NewDialer(MailServer, MailPort, os.Getenv("MAIL_EMAIL"), os.Getenv("MAIL_PASSWORD"))
+		err := n.DialAndSend(msg)
+		if err != nil {
+			fmt.Println("Error sending admin email, " + err.Error())
+		} else {
+			fmt.Println("Successfully sent admin email")
 		}
 	}
 }
