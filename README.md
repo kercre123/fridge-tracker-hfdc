@@ -19,6 +19,7 @@ This software is meant to serve as an endpoint for ESP8266 community-fridge-trac
 		-	Links to download the raw CSV files
 -	There is preliminary support for sending emails to owners of community fridges whenever contact is lost
 	-	A timer is made for each fridge
+		-	Timers are saved to JSON every 5 minutes in case of program shutdown
 	-	A fridge is considered down if no status update has been sent in more than 30 minutes
 
 ## Why

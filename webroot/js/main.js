@@ -71,6 +71,25 @@ function csvToArray(str, delimiter = ",") {
     document.getElementById("dropdown").appendChild(label).appendChild(select);
   }
 
+function submitEmail() {
+  var select = document.getElementById('grids');
+  selectedFridge = select.options[select.selectedIndex].value;
+  email = document.getElementById("email").value
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", "/api/save_email?name=" + selectedFridge + "&email=" + email);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0");
+  xhr.send();
+  xhr.onload = function() {
+    resp = JSON.stringify(xhr.response)
+    if (resp.includes("ok")) {
+      alert("Success!")
+    } else {
+      alert(resp)
+    }
+  }
+
+}
 function goToFridge() {
   var select = document.getElementById('grids');
   selectedValue = select.options[select.selectedIndex].value;
@@ -180,13 +199,13 @@ responsive: true,
 endDiv = document.getElementById('lastDiv');
 endDiv.innerHTML = ''
 var a1 = document.createElement('a');
-var link1 = document.createTextNode("Raw Status CSV");
+var link1 = document.createTextNode("Raw Status CSV (updated every ~5 minutes, does not contain seconds)");
 a1.appendChild(link1)
 a1.title = "Raw Status CSV";
 a1.href = "/statusLogs/" + getCSVName;
 endDiv.appendChild(a1)
 var a2 = document.createElement('a');
-var link2 = document.createTextNode("Raw Opens CSV");
+var link2 = document.createTextNode("Raw Opens CSV (actual data, updated on every fridge open)");
 a2.appendChild(link2)
 a2.title = "Raw Opens CSV";
 a2.href = "/openLogs/" + getCSVName;
