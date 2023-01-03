@@ -1,0 +1,4 @@
+/*.json
+/source.env
+/webroot/openLogs/*.csv
+/webroot/statusLogs/*.csv
