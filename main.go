@@ -34,7 +34,7 @@ const (
 	OpenLogsPath        = "./webroot/openLogs/"
 	StatusLogsPath      = "./webroot/statusLogs/"
 	saveTimerMinutes    = 5
-	TimeBeforeEmergency = 30
+	TimeBeforeEmergency = 1800
 	MailServer          = "smtp.gmail.com"
 	MailPort            = 587
 )
