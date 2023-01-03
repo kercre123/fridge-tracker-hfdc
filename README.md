@@ -1,6 +1,6 @@
 # Hunger Free Dallas County fridge tracker software
 
-This software is meant to serve as an endpoint for ESP8266 community-fridge-trackers.
+This repo contains the software used to track community fridge usage by Hunger Free Dallas County (The Food Grid).
 
 ## Overview
 
@@ -29,11 +29,16 @@ Community fridges are obtained partially through the help of grants from the cou
 ## Technical details
 
 -	Server software written with Go 1.18
+-	Tracker software written with Arduino IDE
 -	Tracker (client) hardware used:
 	-	WeMos D1 mini ESP8266
 	-	ST VL53L0X distance sensor
 	-	DHT22 temperature sensor
--	Env vars:
+-	Arduino IDE libraries used:
+	-	Adafruit Unified Sensor
+	-	Adafruit_VL53L0X
+	-	DHT sensor library (by Adafruit)
+-	Server software env vars:
 	-	MAIL_EMAIL
 		-	"From" email address
 	-	MAIL_PASSWORD
