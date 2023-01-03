@@ -1,8 +1,14 @@
 #!/bin/bash
 
-source source.env
+if [[ -f source.env ]]; then
+	source source.env
+else
+	echo "No source file"
+fi
 if [[ -f main ]]; then
+	echo "Starting compiled program"
 	./main
 else
-	/usr/local/go/bin/go run main.go
+	echo "Starting via go run"
+	go run main.go
 fi
